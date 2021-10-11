@@ -2,6 +2,8 @@
 
 include 'functions.php';
 
+$mystream = new SimpleStream();
+
 ?>
 
 <!DOCTYPE html>
@@ -78,9 +80,9 @@ include 'functions.php';
             <div class="col-md-12">
                 <h2>Stream:</h2>
             </div>
-            <?php if( is_stream_running('radio.odowok.com','8000') ): ?>
+            <?php if( $mystream->is_stream_running('radio.odowok.com','8000') ): ?>
 
-            <?php $streaminfo = get_stream('radio.odowok.com','8000'); ?>
+            <?php $streaminfo = $mystream->get_stream_info('radio.odowok.com','8000'); ?>
             
                 <div class="col-md-12">
                     <h3><?= $streaminfo['server_name']; ?></h3>
@@ -94,6 +96,8 @@ include 'functions.php';
                 <div class="col-md-6">
                     <p><a class="btn btn-success" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     <p>Start: <?= $streaminfo['stream_start']; ?></p>
                 </div>
@@ -116,27 +120,7 @@ include 'functions.php';
                 <h2>Tracklist:</h2>
                 <div class="tracklist">
                 <?php
-                ini_set('display_errors', 1);
-                ini_set('display_startup_errors', 1);
-                error_reporting(E_ALL);
-
-                $tracklist = array();
-                $handle = @fopen("/var/log/icecast/playlist.log", "r");
-                if ($handle) {
-                    while (($buffer = fgets($handle, 4096)) !== false) {
-                        $data = explode('|',$buffer);
-                        $time = strtotime($data[0]);
-                        $tracklist[] =  array(
-                            'date' => date('D h:i',$time),
-                            'title' => $data[3]
-                        ); 
-                    }
-                    if (!feof($handle)) {
-                        $tracklist[] = "Error: unexpected fgets() fail\n";
-                    }
-                    fclose($handle);
-                }
-
+                $tracklist = $mystream->get_stream_log("/var/log/icecast/playlist.log");
                 foreach( array_reverse($tracklist) as $track ){
                     echo $track['date'] . ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $track['title'] . '</br>';
                 }
