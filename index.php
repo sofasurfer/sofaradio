@@ -100,7 +100,7 @@ $mystream = new SimpleStream();
                     <audio src="https://radio.odowok.com:9005/stream" controls ></audio>
                 </div>
                 <div class="col-md-6">
-                    <p>Problem streaming <a target="_blank" href="<?= $streaminfo['listenurl']; ?>">click here</a></p>
+                    <p>Problem streaming: <a class="btn btn-success" target="_blank" href="https://radio.odowok.com:9005/stream">click here</a></p>
 
                     <!--p><a class="btn btn-success btn-large" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p-->
                 </div>
