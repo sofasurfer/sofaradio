@@ -86,19 +86,13 @@ include 'functions.php';
                     <h3><?= $streaminfo['server_name']; ?></h3>
                     <p><?= $streaminfo['server_description']; ?></p>
                 </div>
-
-                <div class="col-md-6">
-                    <audio src="<?= $streaminfo['listenurl']; ?>" controls ></audio>
-                </div>
-
-                <div class="col-md-6">
-                    <p><a class="btn btn-success" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <p>Start: <?= $streaminfo['stream_start']; ?></p>
                 </div>
+
                 <div class="col-md-6">
-                    <p>Listener: <?= $streaminfo['listener_peak']; ?></p>
+                    <!--audio src="<?= $streaminfo['listenurl']; ?>" controls ></audio-->
+                    <p><a class="btn btn-success" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p>
                 </div>
 
             <?php else: ?>
