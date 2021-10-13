@@ -46,9 +46,14 @@ $mystream = new SimpleStream();
             max-height: 600px;
             overflow: scroll;
         }
-
+/*
         .btn{
             font-size: 18px;
+        }
+*/
+        .btn-large{
+            font-size: 24px;
+            /*padding: 5px 40px;*/
         }
 
         footer{
@@ -88,23 +93,17 @@ $mystream = new SimpleStream();
                     <h3><?= $streaminfo['server_name']; ?></h3>
                     <p><?= $streaminfo['server_description']; ?></p>
                 </div>
-
-                <div class="col-md-6">
-                    <audio src="<?= $streaminfo['listenurl']; ?>" controls ></audio>
-                </div>
-
-                <div class="col-md-6">
-                    <p><a class="btn btn-success" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <p>Start: <?= $streaminfo['stream_start']; ?></p>
                 </div>
                 <div class="col-md-6">
-                    <p>Listener: <?= $streaminfo['listener_peak']; ?></p>
+                    <audio src="https://radio.odowok.com:9005/stream" controls ></audio>
                 </div>
+                <div class="col-md-6">
+                    <p>Problem streaming <a target="_blank" href="<?= $streaminfo['listenurl']; ?>">click here</a></p>
 
+                    <!--p><a class="btn btn-success btn-large" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p-->
+                </div>
             <?php else: ?>
                 <div class="col-md-12">
                     <h3>Stream is offline</h3>
