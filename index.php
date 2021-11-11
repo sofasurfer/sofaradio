@@ -32,15 +32,57 @@ $mystream = new SimpleStream();
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <style>
+
+        @keyframes flicker {
+          0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            text-shadow:
+              0 0 4px #fff,
+              0 0 11px #fff,
+              0 0 19px #fff,
+              0 0 40px #0fa,
+              0 0 80px #0fa,
+              0 0 90px #0fa,
+              0 0 100px #0fa,
+              0 0 150px #0fa;
+          }
+          20%, 24%, 55% {       
+            text-shadow: none;
+          }
+        }
+
         body{
             font-family: 'Noto Sans Mono', monospace;
+            background-color: #010a01;
+            color:  white;
+            
+
+        }
+        h1{
+
+          color: #fff;
+          text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #0fa,
+            0 0 82px #0fa,
+            0 0 92px #0fa,
+            0 0 102px #0fa,
+            0 0 151px #0fa;
+            font-family: "Vibur", sans-serif;
+
+            animation: flicker 1.5s infinite alternate;
+
         }
         h2{
             margin-bottom: 20px;
         }
         .jumbotron{
-            background-color: black;
+            /*background-color: black;*/
             color:  white;
+            background-color: #010a01;
+            /*background:  conic-gradient(at bottom left, deeppink, cyan)*/
+
         }
         .tracklist{
             max-height: 600px;
@@ -82,9 +124,9 @@ $mystream = new SimpleStream();
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <!--div class="col-md-12">
                 <h2>Stream:</h2>
-            </div>
+            </div-->
             <?php if( $mystream->is_stream_running('radio.odowok.com','8000') ): ?>
 
             <?php $streaminfo = $mystream->get_stream_info('radio.odowok.com','8000'); ?>
@@ -113,7 +155,7 @@ $mystream = new SimpleStream();
     </div>
 
 
-    <div class="container">
+    <!--div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h2>Tracklist:</h2>
@@ -129,7 +171,7 @@ $mystream = new SimpleStream();
 
             </div>
         </div>
-    </div>
+    </div-->
 
 
     <footer class="container">
