@@ -96,14 +96,14 @@ $mystream = new SimpleStream();
                 <div class="col-md-12">
                     <p>Start: <?= $streaminfo['stream_start']; ?></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <audio src="https://radio.odowok.com:9005/stream" controls ></audio>
                 </div>
-                <div class="col-md-6">
+                <!--div class="col-md-6">
                     <p>Problem streaming: <a class="btn btn-success" target="_blank" href="https://radio.odowok.com:9005/stream">click here</a></p>
 
-                    <!--p><a class="btn btn-success btn-large" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p-->
-                </div>
+                    <p><a class="btn btn-success btn-large" target="_blank" href="<?= $streaminfo['listenurl']; ?>">PLAY</a></p>
+                </div-->
             <?php else: ?>
                 <div class="col-md-12">
                     <h3>Stream is offline</h3>
@@ -141,9 +141,23 @@ $mystream = new SimpleStream();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+
+    <!-- Matomo -->
     <script>
-
-
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//piwik.sofasurfer.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '44']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
     </script>
+    <!-- End Matomo Code -->
+
+
 </body>
 </html>
